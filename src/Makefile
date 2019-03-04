@@ -1,12 +1,16 @@
 
-SRC = $(wildcard *.c)
+# U8G2 graphics library, grab the U8X8 interfaces
+U8G2_SRCS = $(wildcard ../u8g2/csrc/u8x8*.c)
+
+# Add to object files
+OBJS += $(U8G2_SRCS:%.c=%.o)
 
 OPENCM3_DIR := ../libopencm3
 BINARY = main
 LDSCRIPT = stm32f1.ld
 
 CSTD = -std=c99
-INCLUDES += -I../libopencm3/include
+DEFS += -I../u8g2/csrc
 
 LIBNAME		= opencm3_stm32f1
 DEFS		+= -DSTM32F1
